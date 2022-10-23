@@ -14,7 +14,12 @@ const NotFoundPage: NextPage = () => {
 					mystery. But you can click the button below to go back to the
 					homepage.
 				</p>
-				<button className="btn green">HOME</button>
+				<button
+					className="btn green"
+					onClick={() => (window.location.href = "/")}
+				>
+					HOME
+				</button>
 			</div>
 		</StyledNotFoundPage>
 	)
