@@ -1,0 +1,18 @@
+import React from 'react'
+
+import { Story } from '@storybook/react'
+
+import { {{pascalCase name}}, {{pascalCase name}}Props } from './index'
+
+export default {
+  component: {{pascalCase name}},
+  title: '{{pascalCase level}}/{{pascalCase name}}',
+}
+
+const Template: Story<{{pascalCase name}}Props> = (args) => <{{pascalCase name}} {...args} />
+
+export const Normal: Story<{{pascalCase name}}Props> = Template.bind({})
+
+Normal.args = {
+ 
+}
