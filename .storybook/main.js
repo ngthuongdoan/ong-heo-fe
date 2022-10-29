@@ -1,54 +1,29 @@
-const path = require('path')
+const path = require("path")
 
 module.exports = {
-	stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
-	addons: [
-		'@storybook/addon-docs',
-    '@storybook/addon-controls',
-    '@storybook/addon-viewport',
-    '@storybook/addon-actions'
-		"@storybook/addon-links",
-		"@storybook/addon-essentials",
-		"@storybook/addon-interactions",
-	],
-	framework: "@storybook/react",
-	core: {
-		"builder": "@storybook/builder-webpack5",
-	},
-	webpackFinal: async (config) => {
-    config.module.rules.push({
-      test: /\.scss$/,
-      use: ['style-loader', 'css-loader', 'sass-loader'],
-      include: path.resolve(__dirname, '../'),
-    })
-
-    config.module.rules.push({
-      test: /\.(ts|tsx)$/,
-      loader: require.resolve('babel-loader'),
+  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  /** Expose public folder to storybook as static */
+  staticDirs: ["../public"],
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/preset-typescript",
+    "@storybook/preset-scss",
+    {
+      /**
+       * Fix Storybook issue with PostCSS@8
+       * @see https://github.com/storybookjs/storybook/issues/12668#issuecomment-773958085
+       */
+      name: "@storybook/addon-postcss",
       options: {
-        presets: [['react-app', { flow: false, typescript: true }]],
+        postcssLoaderOptions: {
+          implementation: require("postcss"),
+        },
       },
-    })
-
-    config.resolve.modules = [
-      ...(config.resolve.modules || []),
-      path.resolve('./src'),
-      path.resolve(),
-    ]
-
-    config.resolve.extensions.push('.ts', '.tsx')
-
-    return config
-  },
-
-  typescript: {
-    check: false,
-    checkOptions: {},
-    reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) =>
-        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
+  ],
+  core: {
+    builder: "@storybook/builder-webpack5",
   },
+  presets: [path.resolve(__dirname, "./next-preset.js")],
 }
