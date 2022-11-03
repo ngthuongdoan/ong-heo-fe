@@ -19,7 +19,7 @@
     "prepare": "husky install",
     "precommit": "lint-staged",
     "pretty-quick": "pretty-quick --staged",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 ",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
@@ -44,6 +44,7 @@
     "@storybook/react": "^6.5.13",
     "@storybook/testing-library": "^0.0.13",
     "@stylelint/postcss-css-in-js": "^0.38.0",
+    "@svgr/webpack": "^6.5.1",
     "@types/gsap": "^3.0.0",
     "@types/node": "18.11.7",
     "@types/react": "17.0.2",

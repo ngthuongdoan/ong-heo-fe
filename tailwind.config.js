@@ -7,7 +7,12 @@ module.exports = {
     "./.storybook/**/**",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontWeight: {
+        medium: 700,
+        bold: 900,
+      },
+    },
   },
   plugins: [],
 }

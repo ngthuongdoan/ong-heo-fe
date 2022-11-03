@@ -13,4 +13,10 @@ const Template: Story<AlertProps> = (args) => <Alert {...args} />
 
 export const Normal: Story<AlertProps> = Template.bind({})
 
-Normal.args = {}
+Normal.args = {
+  autoClose: true,
+  hasIcon: true,
+  message: "This is a test alert",
+  title: "Title",
+  type: "error",
+}
