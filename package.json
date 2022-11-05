@@ -39,6 +39,7 @@
     "@mantine/prism": "^5.6.4",
     "@mantine/rte": "^5.6.4",
     "@mantine/spotlight": "^5.6.4",
+    "@tabler/icons": "^1.110.0",
     "dayjs": "^1.11.6",
     "embla-carousel-react": "^7.0.4",
     "firebase": "^9.12.1",
