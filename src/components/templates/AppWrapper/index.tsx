@@ -1,12 +1,14 @@
 import { GlobalStyle } from "components/templates/GlobalStyle"
 import { theme } from "config"
-import { ThemeProvider } from "styled-components"
+import { MantineProvider } from "@mantine/core"
 
 const AppWrapper: React.FC = ({ children }) => {
   return (
     <>
       <GlobalStyle />
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
+        {children}
+      </MantineProvider>
     </>
   )
 }

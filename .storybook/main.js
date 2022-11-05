@@ -10,11 +10,12 @@ module.exports = {
   core: {
     builder: "webpack5",
   },
+  staticDirs: ["../public", "../src/assets"],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
     // 'PRODUCTION' is used when building the static version of storybook.
-
+    // config.resolve.modules = [...(config.resolve.modules || []), path.resolve(__dirname, "../src")]
     // Make whatever fine-grained changes you need
     config.module.rules.push({
       test: /\.scss$/,
@@ -33,6 +34,8 @@ module.exports = {
       ],
       include: path.resolve(__dirname, "../"),
     })
+
+    config.resolve.roots = [path.resolve(__dirname, "../public"), "node_modules"]
 
     // Return the altered config
     return config
