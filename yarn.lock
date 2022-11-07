@@ -2016,12 +2016,12 @@
     "@mantine/ssr" "5.7.0"
     "@mantine/styles" "5.7.0"
 
-"@mantine/notifications@^5.6.4":
-  version "5.7.0"
-  resolved "https://registry.yarnpkg.com/@mantine/notifications/-/notifications-5.7.0.tgz#f45aeab6b76be5435e0fd6094b0081ff160bdded"
-  integrity sha512-saTwQppTFuZdDZCui3xypl15XJ0Gg1fip972Tj9w3gZGF+rdM7T9bOlN31fHVWpIBEx4Wjm8ArFrOesbGYtVwA==
+"@mantine/notifications@^5.7.1":
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/@mantine/notifications/-/notifications-5.7.1.tgz#e01750fdd7e33af28f52bc7efa0536c4cf9afb68"
+  integrity sha512-6q9/WSRkp130iRP9Z1H8On2l/TlLLvqwHXv+atK8qIoE8ciZ0TrCwg7Bvm+B3Xsx9RiCajjV7n7RSyjYy0Vyjw==
   dependencies:
-    "@mantine/utils" "5.7.0"
+    "@mantine/utils" "5.7.1"
     react-transition-group "4.4.2"
 
 "@mantine/nprogress@^5.6.4":
