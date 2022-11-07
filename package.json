@@ -12,7 +12,7 @@
     "format": "prettier src --config ./.prettierrc",
     "format:check": "prettier --check src",
     "type-check": "tsc --pretty --noEmit",
-    "generate": "plop",
+    "new": "plop",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:update:snapshot": "jest --updateSnapshot",
