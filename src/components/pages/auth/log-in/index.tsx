@@ -6,14 +6,19 @@ import {
   Title,
   Text,
   Anchor,
-  Group,
-  Divider,
-  Stack,
   createStyles,
+  Divider,
+  Group,
+  Stack,
 } from "@mantine/core"
 import { useForm } from "@mantine/form"
+import { showNotification, updateNotification } from "@mantine/notifications"
+import { IconX } from "@tabler/icons"
 import { GoogleButton } from "components/atoms/GoogleButton"
 import AuthLayout from "components/templates/AuthLayout"
+import { useProvideAuth } from "hooks/useAuth"
+import { useRouter } from "next/router"
+import { useState } from "react"
 
 const useStyles = createStyles((theme) => ({
   title: {
@@ -30,9 +35,17 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
+type UserFormType = {
+  email: string
+  password: string
+}
+
 const Login = () => {
   const { classes } = useStyles()
+  const { signIn } = useProvideAuth()
+  const [isSending, setIsSending] = useState(false)
 
+  const router = useRouter()
   const form = useForm({
     initialValues: {
       email: "",
@@ -45,7 +58,39 @@ const Login = () => {
     },
   })
 
-  const onLogin = () => null
+  const onLogin = async (values: UserFormType) => {
+    try {
+      setIsSending(true)
+      showNotification({
+        id: "login",
+        disallowClose: true,
+        message: "Wait for it",
+        loading: true,
+      })
+      await signIn(values.email, values.password)
+
+      updateNotification({
+        id: "login",
+        title: "Tada!",
+        message: "Welcome to the gangs",
+        autoClose: 5000,
+        color: "green",
+        onClose() {
+          router.replace("/")
+        },
+      })
+    } catch (error: any) {
+      updateNotification({
+        id: "login",
+        title: "Something went wrong",
+        message: error?.message,
+        autoClose: 5000,
+        color: "red",
+        icon: <IconX />,
+      })
+    }
+    setIsSending(false)
+  }
 
   return (
     <AuthLayout>
@@ -92,7 +137,7 @@ const Login = () => {
             </Anchor>
           </Text>
         </Group>
-        <Button fullWidth mt="xl" size="md">
+        <Button fullWidth mt="xl" size="md" type="submit" loading={isSending}>
           Login
         </Button>
       </form>

@@ -17,6 +17,8 @@ export function useProvideAuth() {
   // Wrap any Firebase methods we want to use making sure ...
   // ... to save the user to state.
   const signIn = (email: string, password: string) => {
+    console.log(auth, process.env)
+
     return signInWithEmailAndPassword(auth, email, password).then((response) => {
       setUser(response.user)
     })
