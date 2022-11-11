@@ -1,15 +1,15 @@
 import {
-  Anchor,
-  Button,
+  TextInput,
+  PasswordInput,
   Checkbox,
+  Button,
+  Title,
+  Text,
+  Anchor,
   createStyles,
   Divider,
   Group,
-  PasswordInput,
   Stack,
-  Text,
-  TextInput,
-  Title,
 } from "@mantine/core"
 import { useForm } from "@mantine/form"
 import { showNotification, updateNotification } from "@mantine/notifications"
