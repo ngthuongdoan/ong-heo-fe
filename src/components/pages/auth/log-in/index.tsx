@@ -22,8 +22,10 @@ import { useState } from "react"
 
 const useStyles = createStyles((theme) => ({
   title: {
-    color: theme.colorScheme === "dark" ? theme.white : theme.black,
-    fontFamily: "'Press Start 2P', cursive",
+    color: theme.colors.gray[6],
+  },
+  header: {
+    color: theme.colors.black,
   },
 
   logo: {
@@ -96,13 +98,26 @@ const Login = () => {
     <AuthLayout>
       <Title
         className={classes.title}
-        order={2}
-        align="center"
-        mb="xl"
+        order={4}
+        mb="sm"
+        align="left"
         variant="text"
         transform="uppercase"
       >
-        Welcome back ╰(*°▽°*)╯
+        LOGIN
+      </Title>
+      <Title
+        className={classes.header}
+        order={2}
+        mb="sm"
+        align="left"
+        variant="text"
+        transform="uppercase"
+      >
+        Welcome back to Ột Ột
+      </Title>
+      <Title className={classes.title} order={4} mb="xl" align="left" variant="text">
+        Please enter your information
       </Title>
 
       <form onSubmit={form.onSubmit(onLogin)}>

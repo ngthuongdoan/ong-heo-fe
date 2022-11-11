@@ -10,7 +10,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
     <div className={classes.wrapper}>
       <Paper className={classes.form} radius={0} p={30}>
-        {children}
+        <div className={classes.content}>{children}</div>
       </Paper>
     </div>
   )

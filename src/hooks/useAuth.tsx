@@ -1,5 +1,5 @@
 // Hook (use-auth.js)
-import { auth } from "config/firebaseConfig"
+import { auth } from "config/firebase/init"
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -17,8 +17,6 @@ export function useProvideAuth() {
   // Wrap any Firebase methods we want to use making sure ...
   // ... to save the user to state.
   const signIn = (email: string, password: string) => {
-    console.log(auth, process.env)
-
     return signInWithEmailAndPassword(auth, email, password).then((response) => {
       setUser(response.user)
     })

@@ -1,12 +1,8 @@
-// Import the functions you need from the SDKs you need
+// Modular Firebase v.9 Initialization.
 import { initializeApp } from "firebase/app"
 import { getAuth } from "firebase/auth"
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+const clientCredentials = {
   apiKey: String(process.env.NEXT_PUBLIC_FIREBASE_API_KEY),
   authDomain: String(process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN),
   projectId: String(process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID),
@@ -16,6 +12,18 @@ const firebaseConfig = {
   measurementId: String(process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID),
 }
 
-// Initialize Firebase
-export const app = initializeApp(firebaseConfig)
-export const auth = getAuth(app)
+function initFirebase() {
+  if (typeof window !== undefined) {
+    initializeApp(clientCredentials)
+    console.log("Firebase has been init successfully")
+  }
+}
+
+const app = initializeApp(clientCredentials)
+const auth = getAuth(app)
+export { initFirebase, app, auth }
+// const db = getFirestore(app)
+
+// const realDB = getDatabase(app)
+
+// export { initFirebase, db, realDB }

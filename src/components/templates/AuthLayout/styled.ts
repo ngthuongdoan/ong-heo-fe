@@ -8,6 +8,12 @@ export const useStyles = createStyles((theme) => ({
     backgroundImage: "url(/assets/images/login-background.jpg)",
   },
 
+  content: {
+    width: "60%",
+    maxWidth: "500px",
+    margin: "auto",
+  },
+
   form: {
     position: "absolute",
     right: "0",
@@ -19,7 +25,7 @@ export const useStyles = createStyles((theme) => ({
     borderRight: `1px solid ${
       theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[3]
     }`,
-    width: "40%",
+    width: "50%",
     paddingTop: 80,
 
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
